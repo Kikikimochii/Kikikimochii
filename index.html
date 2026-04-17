@@ -491,7 +491,7 @@
 
 <script>
 const STORAGE_KEY = 'mytracker_v3';
-const MYR_RATE = 3, MYR_SPLIT = 3;
+const MYR_RATE = 3, MYR_SPLIT = 1;
 
 let state = {
   settings: { gross: 0, cpfRate: 0.20, salaryMonths: {} },
@@ -583,7 +583,7 @@ function renderExpenseList() {
   }
   list.innerHTML = expenses.map(e => {
     const bg = CAT_BG[e.emoji] || '#f5f5f5';
-    const origLabel = e.currency === 'MYR' ? `MYR ${Number(e.amount).toFixed(2)} ÷ 9` : '';
+    const origLabel = e.currency === 'MYR' ? `MYR ${Number(e.amount).toFixed(2)} ÷ 3` : '';
     return `<div class="expense-item">
       <div class="expense-left">
         <div class="cat-dot" style="background:${bg}">${e.emoji}</div>
@@ -623,7 +623,7 @@ function renderBillsList() {
   }
   div.innerHTML = state.bills.map(b => {
     const s = toSGD(b.amount, b.currency);
-    const detail = b.currency === 'MYR' ? `MYR ${b.amount} ÷ 9 = ${sgd(s)}` : sgd(s);
+    const detail = b.currency === 'MYR' ? `MYR ${b.amount} ÷ 3 = ${sgd(s)}` : sgd(s);
     const tags = [];
     if (b.type) tags.push(`<span class="rec-tag ${b.type}">${b.type==='auto'?'Auto':'Manual'}</span>`);
     if (b.bank) tags.push(`<span class="rec-tag bank">${b.bank}</span>`);
@@ -664,8 +664,8 @@ function updateMyrHint() {
   if (currentCurrency !== 'MYR') { hint.innerHTML = ''; return; }
   const amt = parseFloat(document.getElementById('amtInput').value) || 0;
   hint.innerHTML = amt > 0
-    ? `≈ <span>${sgd(toSGD(amt,'MYR'))}</span> (your ⅓ share ÷ 3 rate)`
-    : 'MYR ÷ 3 share ÷ 3 rate = SGD';
+    ? `≈ <span>${sgd(toSGD(amt,'MYR'))}</span> (÷ 3 rate)`
+    : 'MYR ÷ 3 rate = SGD';
 }
 
 function addExpense() {
