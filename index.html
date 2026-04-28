@@ -54,6 +54,9 @@
   .new-cycle-btn { padding: 10px 12px; border-radius: 10px; font-size: 13px; font-weight: 600; background: var(--accent-light); color: var(--accent); border: 1px solid var(--accent-light); white-space: nowrap; flex-shrink: 0; }
   .new-cycle-btn:active { opacity: 0.7; }
   .new-cycle-btn.hidden { display: none; }
+  .del-cycle-btn { padding: 10px 12px; border-radius: 10px; font-size: 13px; font-weight: 600; background: none; color: var(--red); border: 1px solid var(--red); white-space: nowrap; flex-shrink: 0; }
+  .del-cycle-btn:active { opacity: 0.7; }
+  .del-cycle-btn.hidden { display: none; }
 
   .add-section { margin: 12px 14px 0; background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border); padding: 14px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
   .add-section h2 { font-size: 11px; font-weight: 600; color: var(--text3); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.7px; }
@@ -216,6 +219,7 @@
         <span id="salaryToggleLabel">Salary received?</span>
       </div>
       <button class="new-cycle-btn" id="newCycleBtn" onclick="startNewCycle()">＋ New Cycle</button>
+      <button class="del-cycle-btn hidden" id="delCycleBtn" onclick="deleteCurrentCycle()">Delete</button>
     </div>
   </div>
 
@@ -496,6 +500,9 @@ function renderCycleLabel() {
   const c = currentCycle();
   document.getElementById('cycleLabel').textContent = cycleLabel(c);
   document.getElementById('newCycleBtn').classList.toggle('hidden', !(isLatestCycle() && !c.isLegacy));
+  // Show delete only on latest cycle with no expenses (safe undo)
+  const canDelete = isLatestCycle() && !c.isLegacy && state.cycles.length > 1 && cycleExps().length === 0;
+  document.getElementById('delCycleBtn').classList.toggle('hidden', !canDelete);
 }
 
 function renderSummary() {
@@ -602,7 +609,16 @@ function startNewCycle() {
   saveState(); render(); showToast('New cycle started 🎉');
 }
 
-// ── Expense Actions ───────────────────────────────────────────────────────────
+function deleteCurrentCycle() {
+  if (!isLatestCycle() || state.cycles.length <= 1) return;
+  if (cycleExps().length > 0) { showToast('Cannot delete — has expenses'); return; }
+  // Remove latest cycle and reopen previous one
+  delete state.expenses[cycleId()];
+  state.cycles.pop();
+  state.cycles[state.cycles.length - 1].endDate = null;
+  currentCycleIdx = state.cycles.length - 1;
+  saveState(); render(); showToast('Cycle deleted ✓');
+}
 
 function addExpense() {
   const amt = parseFloat(document.getElementById('amtInput').value);
