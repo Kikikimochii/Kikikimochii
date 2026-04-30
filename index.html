@@ -172,6 +172,47 @@
   .toast { position: fixed; bottom: calc(86px + var(--safe-bottom)); left: 50%; transform: translateX(-50%) translateY(16px); background: var(--text); color: #fff; padding: 10px 18px; border-radius: 20px; font-size: 14px; opacity: 0; transition: all 0.25s; pointer-events: none; white-space: nowrap; z-index: 100; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
   .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
+  /* ── Chart Tab ── */
+  #page-chart { padding-top: 4px; }
+  .chart-seg { margin: 12px 14px 0; display: flex; background: var(--surface2); border-radius: 10px; padding: 3px; border: 1px solid var(--border); }
+  .chart-seg button { flex: 1; padding: 8px 4px; border-radius: 8px; font-size: 13px; font-weight: 600; color: var(--text3); background: none; border: none; cursor: pointer; transition: all 0.15s; }
+  .chart-seg button.active { background: var(--surface); color: var(--accent); box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+  .chart-cycle-wrap { margin: 10px 14px 0; }
+  .chart-cycle-sel { width: 100%; padding: 11px 14px; border-radius: var(--radius-sm); background: var(--surface); border: 1px solid var(--border); font-size: 15px; color: var(--text); outline: none; -webkit-appearance: none; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239898b0' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; }
+  .chart-banner { margin: 12px 14px 0; background: var(--accent); border-radius: var(--radius); padding: 14px 16px; display: flex; justify-content: space-between; align-items: center; }
+  .chart-banner-left .chart-banner-lbl { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.65); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 3px; }
+  .chart-banner-left .chart-banner-val { font-size: 28px; font-weight: 700; color: #fff; letter-spacing: -0.6px; }
+  .chart-banner-right { text-align: right; }
+  .chart-banner-right .chart-banner-lbl { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.65); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 3px; }
+  .chart-banner-right .chart-banner-sub { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.85); }
+  .chart-donut-card { margin: 12px 14px 0; background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border); padding: 16px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+  .chart-card-title { font-size: 11px; font-weight: 600; color: var(--text3); text-transform: uppercase; letter-spacing: 0.7px; margin-bottom: 16px; }
+  .chart-donut-row { display: flex; align-items: center; gap: 18px; }
+  .chart-donut-wrap { position: relative; width: 116px; height: 116px; flex-shrink: 0; }
+  .chart-donut-svg { width: 116px; height: 116px; transform: rotate(-90deg); }
+  .chart-donut-center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; pointer-events: none; }
+  .chart-donut-center-val { font-size: 14px; font-weight: 700; color: var(--text); }
+  .chart-donut-center-lbl { font-size: 10px; color: var(--text3); margin-top: 2px; }
+  .chart-legend { flex: 1; display: flex; flex-direction: column; gap: 7px; }
+  .chart-legend-item { display: flex; align-items: center; gap: 7px; }
+  .chart-legend-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .chart-legend-name { font-size: 12px; color: var(--text2); flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .chart-legend-pct { font-size: 12px; font-weight: 600; color: var(--text); }
+  .chart-breakdown-card { margin: 10px 14px 0; background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border); overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+  .chart-breakdown-header { font-size: 11px; font-weight: 600; color: var(--text3); text-transform: uppercase; letter-spacing: 0.7px; padding: 13px 14px 8px; }
+  .chart-breakdown-row { padding: 10px 14px; border-top: 1px solid var(--border); }
+  .chart-breakdown-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+  .chart-breakdown-left { display: flex; align-items: center; gap: 9px; }
+  .chart-breakdown-emoji { font-size: 18px; line-height: 1; }
+  .chart-breakdown-name { font-size: 14px; font-weight: 600; color: var(--text); }
+  .chart-breakdown-right { text-align: right; }
+  .chart-breakdown-amt { font-size: 14px; font-weight: 700; color: var(--text); }
+  .chart-breakdown-pct { font-size: 11px; color: var(--text3); margin-left: 5px; }
+  .chart-bar-track { height: 4px; background: var(--surface2); border-radius: 4px; }
+  .chart-bar-fill { height: 100%; border-radius: 4px; transition: width 0.4s ease; }
+  .chart-empty { text-align: center; padding: 40px 0; color: var(--text3); font-size: 14px; }
+  .chart-empty div { font-size: 36px; margin-bottom: 8px; }
+
   .modal-overlay { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,0.45); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); align-items: flex-end; justify-content: center; }
   .modal-overlay.open { display: flex; }
   .modal-sheet { background: var(--surface); width: 100%; border-radius: 20px 20px 0 0; padding: 20px 16px calc(20px + var(--safe-bottom)); animation: slideUp 0.22s ease; }
@@ -344,6 +385,9 @@
   <button class="nav-tab active" id="tab-log" onclick="switchTab('log')">
     <div class="nav-icon">📋</div>Log
   </button>
+  <button class="nav-tab" id="tab-chart" onclick="switchTab('chart')">
+    <div class="nav-icon">📊</div>Charts
+  </button>
   <button class="nav-tab" id="tab-settings" onclick="switchTab('settings')">
     <div class="nav-icon">⚙️</div>Settings
   </button>
@@ -351,7 +395,55 @@
 
 <div class="toast" id="toast"></div>
 
-<!-- Edit Bill Modal -->
+<!-- ── Chart Page ── -->
+<div id="page-chart" class="page">
+
+  <!-- Cycle segment: current vs picker -->
+  <div class="chart-seg" style="margin-top:14px;">
+    <button id="chartSegCurrent" class="active" onclick="setChartSeg('current')">This Cycle</button>
+    <button id="chartSegPick" onclick="setChartSeg('pick')">Past Cycle</button>
+  </div>
+
+  <!-- Cycle picker (only visible in pick mode) -->
+  <div class="chart-cycle-wrap" id="chartCycleWrap" style="display:none;">
+    <select class="chart-cycle-sel" id="chartCycleSel" onchange="renderChart()"></select>
+  </div>
+
+  <!-- Total banner -->
+  <div class="chart-banner" id="chartBanner">
+    <div class="chart-banner-left">
+      <div class="chart-banner-lbl">Total Spent</div>
+      <div class="chart-banner-val" id="chartBannerVal">S$0.00</div>
+    </div>
+    <div class="chart-banner-right">
+      <div class="chart-banner-lbl">Entries</div>
+      <div class="chart-banner-sub" id="chartBannerEntries">—</div>
+    </div>
+  </div>
+
+  <!-- Donut -->
+  <div class="chart-donut-card">
+    <div class="chart-card-title">Where it went</div>
+    <div class="chart-donut-row">
+      <div class="chart-donut-wrap">
+        <svg class="chart-donut-svg" viewBox="0 0 36 36" id="chartDonutSvg"></svg>
+        <div class="chart-donut-center">
+          <div class="chart-donut-center-val" id="chartDonutVal">—</div>
+          <div class="chart-donut-center-lbl">total</div>
+        </div>
+      </div>
+      <div class="chart-legend" id="chartLegend"></div>
+    </div>
+  </div>
+
+  <!-- Breakdown list -->
+  <div class="chart-breakdown-card">
+    <div class="chart-breakdown-header">Breakdown</div>
+    <div id="chartBreakdown"></div>
+  </div>
+
+  <div style="height:16px;"></div>
+</div>
 <div class="modal-overlay" id="editBillModal" onclick="closeEditModal(event)">
   <div class="modal-sheet">
     <div class="modal-title">Edit Bill</div>
@@ -614,6 +706,8 @@ function startNewCycle() {
   if (c.endDate !== null) { showToast('Not on current cycle'); return; }
   const y = new Date(); y.setDate(y.getDate()-1);
   c.endDate = y.getFullYear()+'-'+String(y.getMonth()+1).padStart(2,'0')+'-'+String(y.getDate()).padStart(2,'0');
+  // Snapshot bills at close time so past cycle totals are never corrupted
+  c.billsSnapshot = JSON.parse(JSON.stringify(state.bills));
   state.cycles.push({ id: 'c_'+Date.now(), startDate: todayStr(), endDate: null, salaryReceived: false });
   currentCycleIdx = state.cycles.length - 1;
   saveState(); render(); showToast('New cycle started 🎉');
@@ -826,6 +920,7 @@ function switchTab(tab) {
   document.getElementById('page-'+tab).classList.add('active');
   document.getElementById('tab-'+tab).classList.add('active');
   if (tab === 'settings') renderSettings();
+  if (tab === 'chart') renderChart();
   window.scrollTo(0,0);
 }
 
@@ -894,6 +989,127 @@ function renderRecurring() {
     </div>`;
   }).join('');
   body.classList.toggle('open', recurringOpen); header.classList.toggle('open', recurringOpen); chevron.classList.toggle('open', recurringOpen);
+}
+
+// ── Chart ─────────────────────────────────────────────────────────────────────
+
+const CHART_COLORS = ['#5e4dcd','#1c9c6a','#b87000','#d94f4f','#3a86c8','#9d4edd','#e07b39','#2a9d8f','#c77dff','#9898b0'];
+
+let chartSeg = 'current'; // 'current' | 'pick'
+
+function setChartSeg(seg) {
+  chartSeg = seg;
+  document.getElementById('chartSegCurrent').className = seg === 'current' ? 'active' : '';
+  document.getElementById('chartSegPick').className = seg === 'pick' ? 'active' : '';
+  document.getElementById('chartCycleWrap').style.display = seg === 'pick' ? 'block' : 'none';
+  if (seg === 'pick') populateChartCycleSel();
+  renderChart();
+}
+
+function populateChartCycleSel() {
+  const sel = document.getElementById('chartCycleSel');
+  const closed = state.cycles.filter(c => c.endDate !== null);
+  if (!closed.length) { sel.innerHTML = '<option>No past cycles yet</option>'; return; }
+  sel.innerHTML = [...closed].reverse().map(c =>
+    `<option value="${c.id}">${cycleLabel(c)}</option>`
+  ).join('');
+}
+
+function getBillsForCycle(cycle) {
+  // Use snapshot if available (closed cycle), else live bills (current open cycle)
+  return cycle.billsSnapshot || state.bills;
+}
+
+function getChartCycle() {
+  if (chartSeg === 'current') return currentCycle();
+  const id = document.getElementById('chartCycleSel').value;
+  return state.cycles.find(c => c.id === id) || state.cycles[state.cycles.length - 1];
+}
+
+function renderChart() {
+  const cycle = getChartCycle();
+  const bills = getBillsForCycle(cycle);
+  const expenses = state.expenses[cycle.id] || [];
+
+  // Build category map
+  const catMap = {}; // name -> { emoji, amount }
+
+  // Add recurring bills as one group per bill (or collapsed as "Bills")
+  bills.forEach(b => {
+    const s = toSGD(b.amount, b.currency);
+    const key = '💳 Bills';
+    if (!catMap[key]) catMap[key] = { emoji: '💳', name: 'Bills', amount: 0 };
+    catMap[key].amount += s;
+  });
+
+  // Add logged expenses
+  expenses.forEach(e => {
+    const key = e.emoji + ' ' + e.cat;
+    if (!catMap[key]) catMap[key] = { emoji: e.emoji, name: e.cat, amount: 0 };
+    catMap[key].amount += e.sgdAmount;
+  });
+
+  const items = Object.values(catMap).sort((a, b) => b.amount - a.amount);
+  const total = items.reduce((s, i) => s + i.amount, 0);
+
+  // Banner
+  document.getElementById('chartBannerVal').textContent = (total > 0 ? '' : '') + sgd(total);
+  document.getElementById('chartBannerEntries').textContent = expenses.length + ' entries' + (bills.length ? ' + ' + bills.length + ' bills' : '');
+
+  if (!total) {
+    document.getElementById('chartDonutSvg').innerHTML = `<circle cx="18" cy="18" r="15.9" fill="none" stroke="#e0e0e0" stroke-width="3.2"/>`;
+    document.getElementById('chartDonutVal').textContent = '—';
+    document.getElementById('chartLegend').innerHTML = '';
+    document.getElementById('chartBreakdown').innerHTML = '<div class="chart-empty"><div>📭</div>No data for this cycle yet</div>';
+    return;
+  }
+
+  // Donut SVG (circumference = 2πr = 99.9 for r=15.9)
+  const R = 15.9, C = 2 * Math.PI * R;
+  let offset = 0;
+  const maxLegend = 5;
+  let svgPaths = '';
+  items.forEach((item, i) => {
+    const pct = item.amount / total;
+    const dash = pct * C;
+    const color = CHART_COLORS[i % CHART_COLORS.length];
+    svgPaths += `<circle cx="18" cy="18" r="${R}" fill="none" stroke="${color}" stroke-width="3.2" stroke-dasharray="${dash.toFixed(2)} ${(C - dash).toFixed(2)}" stroke-dashoffset="${(-offset * C / 1).toFixed(2)}" stroke-linecap="butt"/>`;
+    offset += pct;
+  });
+  document.getElementById('chartDonutSvg').innerHTML = svgPaths;
+  document.getElementById('chartDonutVal').textContent = sgd(total);
+
+  // Legend (top 5)
+  document.getElementById('chartLegend').innerHTML = items.slice(0, maxLegend).map((item, i) => {
+    const pct = Math.round(item.amount / total * 100);
+    const color = CHART_COLORS[i % CHART_COLORS.length];
+    return `<div class="chart-legend-item">
+      <div class="chart-legend-dot" style="background:${color}"></div>
+      <span class="chart-legend-name">${item.emoji} ${item.name}</span>
+      <span class="chart-legend-pct">${pct}%</span>
+    </div>`;
+  }).join('') + (items.length > maxLegend ? `<div class="chart-legend-item"><span class="chart-legend-name" style="color:var(--text3)">+${items.length - maxLegend} more below</span></div>` : '');
+
+  // Breakdown list
+  document.getElementById('chartBreakdown').innerHTML = items.map((item, i) => {
+    const pct = Math.round(item.amount / total * 100);
+    const color = CHART_COLORS[i % CHART_COLORS.length];
+    return `<div class="chart-breakdown-row">
+      <div class="chart-breakdown-top">
+        <div class="chart-breakdown-left">
+          <span class="chart-breakdown-emoji">${item.emoji}</span>
+          <span class="chart-breakdown-name">${item.name}</span>
+        </div>
+        <div class="chart-breakdown-right">
+          <span class="chart-breakdown-amt">${sgd(item.amount)}</span>
+          <span class="chart-breakdown-pct">${pct}%</span>
+        </div>
+      </div>
+      <div class="chart-bar-track">
+        <div class="chart-bar-fill" style="width:${pct}%;background:${color};"></div>
+      </div>
+    </div>`;
+  }).join('');
 }
 
 // ── Boot ──────────────────────────────────────────────────────────────────────
